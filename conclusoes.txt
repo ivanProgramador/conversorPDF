@@ -1,0 +1,31 @@
+Uma planilha foi exeportada no formato csv, eo formato mais simples  
+mas ele preserva a alocalização de cada dados conforma a posição linhas /colunas 
+as palavras nas linhas são separadas por ',', vou usar a função abaixo para mostrar os dados 
+do arquivo recebido porem, pra mim e mais interessante um retorno deste dados e não 
+so a impressão deles, arafazer isso eu vou ter que transformar a função em uma promessa  
+
+const fs = require('fs');
+
+// essa função recebe como parametro a localização do arquivo
+
+function Reader(filepath){
+
+    fs.readFile(filepath,"utf-8",(err,data)=>{
+
+        if(err){
+
+            console.log('erro na leitura ');
+
+        }else{
+
+            console.log(data);
+
+        }
+    })
+}
+
+module.exports = Reader;
+
+
+
+
