@@ -3,11 +3,13 @@ var Writer = require('./Writer');
 var Processor = require('./Processor');
 var Table = require('./Table');
 var HtmlParser = require('./HtmlParser');
+var PDFWriter = require('./PDFWriter');
+
 var Leitor = new Reader('users.csv');
-
-
 var leitor = new Reader();
 var escritor = new Writer();
+
+
 
 
 async function main(){
@@ -18,11 +20,11 @@ async function main(){
 
     var usuarios = new Table(dadosProcessados);
 
-    var html = await HtmlParser.Parse(usuarios);
+    var html = await HtmlParser.Parse(usuarios); 
 
-    //gerando o aruivo html 
+    escritor.Write("htmlNovo.html",html); //gera html
 
-    escritor.Write("htmlNovo.html",html);
+    PDFWriter.WritePdf(Date.now() + ".PDF", html); //gera pdf
     
 
 }
